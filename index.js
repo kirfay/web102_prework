@@ -5,10 +5,11 @@
 */
 
 // import the JSON data about the crowd funded games from the games.js file
+import games from './games.js';
 import GAMES_DATA from './games.js';
 
 // create a list of objects to store the data about the games using JSON.parse
-const GAMES_JSON = JSON.parse(GAMES_DATA)
+const GAMES_JSON = JSON.parse(GAMES_DATA);
 
 // remove all child elements from a parent element in the DOM
 function deleteChildElements(parent) {
@@ -30,16 +31,22 @@ function addGamesToPage(games) {
 
     // loop over each item in the data
 
-    function addGamesToPage(games) {
+        // create a new div element, which will become the game card
+        // add the class game-card to the list
+        // set the inner HTML using a template literal to display some info 
+        // about each game
+        // TIP: if your images are not displaying, make sure there is space
+        // between the end of the src attribute and the end of the tag ("/>")
+        // append the game to the games-container
         for (let game of games) {
           const gameCard = document.createElement("div");
           gameCard.classList.add("game-card");
       
           gameCard.innerHTML = `
             <img src="${game.img}" class="game-img" />
-            <h3>${game.name}</h3>
-            <p>${game.description}</p>
-            <p>Backers: ${game.backers}</p>
+            <h3>${game.name} </h3>
+            <p>${game.description} </p>
+            <p>Backers: ${game.backers} </p>
           `;
       
           gamesContainer.appendChild(gameCard);
@@ -49,25 +56,6 @@ function addGamesToPage(games) {
 
 
 
-
-        // create a new div element, which will become the game card
-       
-        
-
-        // add the class game-card to the list
-        
-        // set the inner HTML using a template literal to display some info 
-        
-
-       
-        // about each game
-        // TIP: if your images are not displaying, make sure there is space
-        // between the end of the src attribute and the end of the tag ("/>")
-
-
-        // append the game to the games-container
-       
-    
 
         
 
@@ -89,6 +77,8 @@ function showFundedGames() {
   
   // Initial call to display funded games
   showFundedGames();
+
+  const contributionsCard = document.getElementById("num-contributions");
   const totalContributions = GAMES_JSON.reduce(
     (acc, game) => acc + game.backers,
     0
@@ -96,14 +86,12 @@ function showFundedGames() {
   contributionsCard.innerHTML = `${totalContributions.toLocaleString("en-US")}`;
 
 // grab the contributions card element
-const contributionsCard = document.getElementById("num-contributions");
+//const contributionsCard = document.getElementById("num-contributions");
 
 // use reduce() to count the number of total contributions by summing the backers
 
 
 // set the inner HTML using a template literal and toLocaleString to get a number with commas
-
-
 // grab the amount raised card, then use reduce() to find the total amount raised
 const raisedCard = document.getElementById("total-raised");
 const totalRaised = GAMES_JSON.reduce((acc, game) => acc + game.pledged, 0);
@@ -116,9 +104,6 @@ raisedCard.innerHTML = `$${totalRaised.toLocaleString("en-US")}`;
 const gamesCard = document.getElementById("num-games");
 const totalGames = GAMES_JSON.length;
 gamesCard.innerHTML = `${totalGames}`;
-
-
-}
 
 
 /*************************************************************************************
@@ -218,6 +203,9 @@ const sortedGames = GAMES_JSON.sort(
   AOS.init();
   
   // Search functionality
+  // use destructuring and the spread operator to grab the first and second games
+ // create a new element to hold the name of the top pledge game, then append it to the correct element
+ // do the same for the runner up item
   const searchInput = document.getElementById("search-input");
   
   searchInput.addEventListener("input", (e) => {
@@ -229,8 +217,3 @@ const sortedGames = GAMES_JSON.sort(
     addGamesToPage(filteredGames);
   });
 
-// use destructuring and the spread operator to grab the first and second games
-
-// create a new element to hold the name of the top pledge game, then append it to the correct element
-
-// do the same for the runner up item
