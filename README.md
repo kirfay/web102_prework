@@ -23,7 +23,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented features:
 
-<img src='/Users/kiranfayyaz/Desktop/Prework102 Sea Monster Games app.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Prework102 Sea Monster Games app.gif
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with LiceCap 
